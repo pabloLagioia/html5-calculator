@@ -1,0 +1,8 @@
+.state {
+  font-weight: bold;
+  color: #000;
+}
+
+.state.on {
+  color: #f00;
+}
