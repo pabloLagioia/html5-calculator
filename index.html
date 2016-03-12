@@ -1,24 +1,72 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
   <head>
-    <title>Lamparita</title>
-    <meta name="description" content="Ejercicio 5">
+    <title>HTML5 Calculator</title>
+    <meta name="description" content="An opensource HTML5 calculator">
     <meta name="keywords" content="HTML,CSS,JavaScript">
     <meta name="author" content="Pablo Lagioia">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="js/lib/jquery-2.2.0.min.js"></script>
   </head>
   <body>
-    <h1>Hola <span id="name"></span>!</h1>
-    <p>Hace click en la lamparita para prenderla o apagarla</p>
-    <img id="bulb" src="http://www.w3schools.com/js/pic_bulboff.gif" data-action="toggle-bulb">
-    <button data-action="toggle-bulb">Toggle</button>
-    <p>Estado: <span class="state">Apagada</span>
+    <h1>HTML5 Calculator</h1>
+    <div id="calculator" class="container color-highlight">
+      <div id="visor" class="row display">
+        <div class="col-4">
+          
+          <div class="row">
+            <div id="operation-display" class="col-4 text txt-right operation">
+              5 + 2
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1 result equals">=</div>
+            <div id="user-input-display" class="col-3 text txt-right result">
+              7
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="user-input" class="row">
+        <div class="col-3">
+          <div data-type="buttons-row" class="row">
+            <button class="button btn-default" data-action="insert-value" data-value="7">7</button>
+            <button class="button btn-default" data-action="insert-value" data-value="8">8</button>
+            <button class="button btn-default" data-action="insert-value" data-value="9">9</button>
+          </div>
+          <div data-type="buttons-row" class="row">
+            <button class="button btn-default" data-action="insert-value" data-value="4">4</button>
+            <button class="button btn-default" data-action="insert-value" data-value="5">5</button>
+            <button class="button btn-default" data-action="insert-value" data-value="6">6</button>
+          </div>
+          <div data-type="buttons-row" class="row">
+            <button class="button btn-default" data-action="insert-value" data-value="1">1</button>
+            <button class="button btn-default" data-action="insert-value" data-value="2">2</button>
+            <button class="button btn-default" data-action="insert-value" data-value="3">3</button>
+          </div>
+          <div data-type="buttons-row" class="row">
+            <button class="button btn-default" data-action="insert-value" data-value=".">.</button>
+            <button class="button btn-default" data-action="insert-value" data-value="0">0</button>
+            <button class="button btn-default" data-action="execute-operation" data-operation="calculate">=</button>
+          </div>
+        </div>
+        <div class="col-1">
+          <div data-type="buttons-row" class="row">
+            <button class="button btn-light btn-small" data-action="execute-operation" data-operation="remove-value">DEL</button>
+            <button class="button btn-light btn-small" data-action="insert-value" data-value="+">+</button>
+            <button class="button btn-light btn-small" data-action="insert-value" data-value="-">-</button>
+            <button class="button btn-light btn-small" data-action="insert-value" data-value="/">/</button>
+            <button class="button btn-light btn-small" data-action="insert-value" data-value="*">*</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer>
       <div>Created by Pablo Lagioia</div>
       <div><a href="mailto:pablo.lagioia@gmail.com">pablo.lagioia@gmail.com</a></div>
     </footer>
-    <script src="js/main-jquery.js"></script>
+    <script src="js/main2.js"></script>
   </body>
 </html>

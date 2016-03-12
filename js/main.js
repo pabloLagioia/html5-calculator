@@ -1,41 +1,60 @@
-//Escuchar el evento que se ejecuta cuando el documento termino de cargar
-document.addEventListener("DOMContentLoaded", function(event) { 
+var result = 0;
+var operation = [];
 
-    var name = document.getElementById('name'); //Obtener elementos por id
-    var bulb = document.querySelector('#bulb'); //Obtener por id usando el sistem de busqueda de css
-    var state = document.querySelector('.state'); //Obtener por clase
+var operationDisplay = $("#operation-display");
+var resultDisplay = $("#user-input-display");
 
-    //Estado de la lamparita
-    var bulbOn = false;
+function updateOperationDisplay() {
+    operationDisplay.html(operation.join(""));
+}
 
-    //Imagenes
-    var bulbOnPicture = "http://www.w3schools.com/js/pic_bulbon.gif";
-    var bulbOffPicture = "http://www.w3schools.com/js/pic_bulboff.gif";
+function updateResultDisplay() {
+    resultDisplay.html(result);
+}
 
-    //Cambiar el HTML del elemento de id name
-    name.innerHTML = "Pablo";
+$(document).on("click", "[data-action=insert-value]", function (event) {
+    
+    var target = $(event.currentTarget);
 
-    //Funcion para cambiar el estado
-    function toggleBulb() {
+    var value = target.attr("data-value");
 
-        if (bulbOn) {
-            bulbOn = false; //Cambiar el estado de la lamparita
-            bulb.src = bulbOffPicture; //Cambiar el origen de la imagen
-            state.innerHTML = 'Apagada'; //Cambiar el texto del estado
-            state.className = 'state'; //Cambiar la clase del estado
-        } else {
-            bulbOn = true;
-            bulb.src = bulbOnPicture;
-            state.innerHTML = 'Encendida';
-            state.className = 'state on';
-        }
+    operation.push(value);
+
+    updateOperationDisplay();
+
+});
+
+$(document).on("click", "[data-action=execute-operation][data-operation=remove-value]", function() {
+
+    if (operation.length == 0) {
+        result = 0;
+        updateResultDisplay();
+    }
+    
+    operation.pop();
+
+    updateOperationDisplay();
+
+});
+
+$(document).on("click", "[data-action=execute-operation][data-operation=calculate]", function() {
+
+    try {
+
+        result = eval(operation.join(""));
+
+        operationDisplay.removeClass("error");
+
+        updateResultDisplay();
+
+    } catch (e) {
+
+        operationDisplay.addClass("error");
 
     }
 
-    //Escuchar el evento click que se da en el elemento que tiene data-action igual a toggle-bulb
-    document.querySelector('[data-action=toggle-bulb]').addEventListener('click', function() {
-        //Invokar la funcion toggleBulb
-        toggleBulb();
-    });
-
 });
+
+
+updateResultDisplay();
+updateOperationDisplay();
