@@ -22,3 +22,11 @@ var calculator = {
 $("[data-action=insert-value]").on("click", function(event) {
     calculator.insertValue($(event.currentTarget).attr("data-value"));
 });
+
+$("[data-operation=remove-value]").on("click", function(event) {
+    calculator.removeLastValue();
+});
+
+$("[data-operation=calculate]").on("click", function(event) {
+    calculator.resolve();
+});
