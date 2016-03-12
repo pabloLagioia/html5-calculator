@@ -15,10 +15,14 @@ var calculator = {
 
     },
     "removeLastValue": function() {
-        throw new Error("Not implemented yet");
+        this.ecuation.pop();
+
+        this.display.input.html(this.ecuation.join(""));
+
     }
 };
 
+/**Para aplicar el evento al elemento al hacer click. (JQuery) **/
 $("[data-action=insert-value]").on("click", function(event) {
     calculator.insertValue($(event.currentTarget).attr("data-value"));
 });
